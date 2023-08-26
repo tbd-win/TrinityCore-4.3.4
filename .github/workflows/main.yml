@@ -1,6 +1,16 @@
 name: Deploy dev
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      DEPLOY_BRANCH:
+         required: true
+         type: choice
+
+env: 
+  TCORE_DB_USER: ${{secrets.TCORE_DB_USER}}
+  TCORE_DB_PASS: ${{secrets.TCORE_DB_PASS}}
+  DEPLOY_BRANCH: ${{inputs.DEPLOY_BRANCH}}
 
 jobs:
   dev-deploy:
@@ -9,7 +19,6 @@ jobs:
 
       - name: Run clean script
         run: /bin/bash /home/tcore/clean_environment.sh
-          
 
       - name: Run build scripts
         run: /bin/bash /home/tcore/build_environment.sh
