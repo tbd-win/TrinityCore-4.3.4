@@ -1,2 +1,16 @@
 name: Deploy dev
 
+on: workflow_dispatch
+
+jobs:
+  dev-deploy:
+    runs-on: wow-cata-dev
+    steps: 
+
+      - name: Run clean script
+        run: /bin/bash /home/tcore/clean_environment.sh
+          
+
+      - name: Run build scripts
+        run: /bin/bash /home/tcore/build_environment.sh
+          
