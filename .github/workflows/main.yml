@@ -5,7 +5,7 @@ on:
     inputs:
       DEPLOY_BRANCH:
          required: true
-         type: choice
+         type: string
 
 env: 
   TCORE_DB_USER: ${{secrets.TCORE_DB_USER}}
